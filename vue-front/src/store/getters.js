@@ -1,3 +1,4 @@
+// Getter 存储公有的计算属性
 const getters = {
   sidebar: state => state.app.sidebar,
   visitedViews: state => state.app.visitedViews,
