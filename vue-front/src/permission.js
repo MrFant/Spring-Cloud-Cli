@@ -9,16 +9,20 @@ router.beforeEach((to, from, next) => {
   if (getToken()) {
     //如果已经登录
 
+    // 防止登录后进入登录界面
     if (to.path === '/login') {
       next({path: '/'})
       NProgress.done() // 结束Progress
     } else if (!store.getters.role) {
+      // 个人信息为空
       store.dispatch('GetInfo').then(() => {
+        // 先获取个人信息，再跳转
         next({...to})
       })
     } else {
       next()
     }
+    // 没登录
   } else if (whiteList.indexOf(to.path) !== -1) {
     //如果前往的路径是白名单内的,就可以直接前往
     next()
@@ -28,6 +32,7 @@ router.beforeEach((to, from, next) => {
     NProgress.done() // 结束Progress
   }
 })
+
 router.afterEach(() => {
   NProgress.done() // 结束Progress
 })

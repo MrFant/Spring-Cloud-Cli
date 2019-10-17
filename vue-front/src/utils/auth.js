@@ -1,3 +1,4 @@
+// 设置获取token工具,用于验证是否已登录
 import Cookies from 'js-cookie'
 
 const LoginKey = 'hasLogin'

@@ -14,6 +14,7 @@
         <span class="svg-container">
           <svg-icon icon-class="password"></svg-icon>
         </span>
+        <!-- 当输入密码时按回车键验证提交form -->
         <el-input type="password" @keyup.enter.native="handleLogin" v-model="loginForm.password"
                   autoComplete="on"></el-input>
       </el-form-item>

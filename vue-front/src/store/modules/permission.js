@@ -40,12 +40,12 @@ function filterAsyncRouter(asyncRouterMap, menus) {
 
 const permission = {
   state: {
-    routers: constantRouterMap, //本用户所有的路由,包括了固定的路由和下面的addRouters
-    addRouters: [] //本用户的角色赋予的新增的动态路由
+    routers: constantRouterMap, //本用户所有的路由,包括了固定的路由和下面的newRouters
+    newRouters: [] //本用户的角色赋予的新增的动态路由
   },
   mutations: {
     SET_ROUTERS: (state, routers) => {
-      state.addRouters = routers
+      state.newRouters = routers
       state.routers = constantRouterMap.concat(routers) //将固定路由和新增路由进行合并, 成为本用户最终的全部路由信息
     }
   },

@@ -9,6 +9,7 @@ const service = axios.create({
 })
 // request拦截器
 service.interceptors.request.use(config => {
+  // 在请求拦截器里为请求加上token
   config.headers.Authorization=sessionStorage.getItem('cloud-ida-token');
   return config
 }, error => {
@@ -47,6 +48,7 @@ service.interceptors.response.use(
     }
   },
   error => {
+    // 当错误发生的时候弹出消息，比如500错误
     console.error('err' + error)// for debug
     Message({
       message: error.message,

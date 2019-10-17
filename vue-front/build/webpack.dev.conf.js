@@ -39,7 +39,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     proxy: config.dev.proxyTable,
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
+      // 轮询时间，周期查看文件是否修改
       poll: config.dev.poll,
+      // 当有更改时在重新构建前增加延迟，这个延迟时间内的所有修改会聚合到一次构建
+      aggregateTimeout:config.dev.aggregateTimeout,
     }
   },
   plugins: [

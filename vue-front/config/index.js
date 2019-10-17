@@ -22,6 +22,8 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
+    poll:3000,
+    aggregateTimeout:3000,
     host: 'localhost',
     port: 9521,
     autoOpenBrowser: true,
