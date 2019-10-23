@@ -39,6 +39,7 @@ function filterAsyncRouter(asyncRouterMap, menus) {
 }
 
 const permission = {
+  // 这个module存放的是当前登录用户所具有访问权限的路由
   state: {
     routers: constantRouterMap, //本用户所有的路由,包括了固定的路由和下面的newRouters
     newRouters: [] //本用户的角色赋予的新增的动态路由
@@ -58,7 +59,7 @@ const permission = {
         const menus = userPermission.menuList;
         //声明 该角色可用的路由
         let accessedRouters
-        if (role === '管理员') {
+        if (role === 'admin') {
           //如果角色里包含'管理员',那么所有的路由都可以用
           //其实管理员也拥有全部菜单,这里主要是利用角色判断,节省加载时间
           accessedRouters = asyncRouterMap

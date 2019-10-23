@@ -5,7 +5,7 @@ import store from '../store'
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.BASE_URL, // api的base_url
-  timeout: 15000                  // 请求超时时间2
+  timeout: 15000                  // 请求超时时间1.5s
 })
 // request拦截器
 service.interceptors.request.use(config => {
@@ -39,8 +39,9 @@ service.interceptors.response.use(
       });
       return Promise.reject(res.msg)
     }else{
+      // 这个错误和下面的error不同
       Message({
-        message: res.msg,
+        message: res.msg+"有返回的错误",
         type: 'error',
         duration: 3 * 1000
       })
@@ -51,7 +52,7 @@ service.interceptors.response.use(
     // 当错误发生的时候弹出消息，比如500错误
     console.error('err' + error)// for debug
     Message({
-      message: error.message,
+      message: error.message+"服务器返回的错误",
       type: 'error',
       duration: 3 * 1000
     })

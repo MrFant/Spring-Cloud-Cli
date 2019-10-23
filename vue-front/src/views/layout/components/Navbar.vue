@@ -8,11 +8,13 @@
         <i class="el-icon-caret-bottom"></i>
       </div>
       <el-dropdown-menu class="user-dropdown" slot="dropdown">
+        <!-- 即使不用router-link，下拉菜单指针依然是手形工具，element已经设置了css的cusor -->
         <router-link class="inlineBlock" to="/">
           <el-dropdown-item>
             首页
           </el-dropdown-item>
         </router-link>
+        <!-- divided会出现一条分割线 -->
         <el-dropdown-item divided>
           <span @click="logout" style="display:block;">登出</span>
         </el-dropdown-item>

@@ -59,6 +59,7 @@
               this.loading = false
             })
           } else {
+            // 验证失败之后会在账号密码框下面弹出提示
             return false
           }
         })

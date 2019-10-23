@@ -6,6 +6,7 @@ import Layout from '@/views/layout/Layout'
 
 const _import = require('./_import_' + process.env.NODE_ENV)
 Vue.use(Router)
+// 以下是常规路由，为了避免被sidebar渲染出来，所以加上了hidden
 export const constantRouterMap = [
   {path: '/login', component: _import('login/index'), hidden: true},
   {path: '/404', component: _import('404'), hidden: true},
@@ -22,9 +23,11 @@ export const constantRouterMap = [
 ]
 export default new Router({
   // mode: 'history', //后端支持可开
+  // 对所有对路由导航页面切换到新页面的时候让页面竖直滚动到顶部
   scrollBehavior: () => ({y: 0}),
   routes: constantRouterMap
 })
+// 以下是作为sidebar的标签路由，就没有hidden字段
 export const asyncRouterMap = [
   {
     path: '/tag',
